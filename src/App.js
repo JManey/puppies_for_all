@@ -2,9 +2,15 @@ import React, { Component } from "react";
 import "./App.css";
 
 import Header from "./components/Header/Header";
+
 import PuppyView from "./components/PuppyView/PuppyView";
-import PuppyCard from "./components/PuppyCard/PuppyCard";
+
+import MainPage from "./pages/MainPage/MainPage";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Album from "./components/MaterialAlbum/Album";
+
+import MaterialCard from "./components/SignUpCard/SignUpCard";
+import SignupPage from "./pages/SignUpPage/SignupPage";
 
 export default class App extends Component {
   // state = {
@@ -24,13 +30,13 @@ export default class App extends Component {
       <BrowserRouter>
         <Switch>
           <div className="App">
-            <Header />
+            {/* <Header /> */}
             <h1>Welcome to Puppy Smiles!</h1>
             <div>
               {/* should be Container */}
               <main>
-                {/* <Route exact path="/" render={() => <PuppyView />} /> */}
-                <Route exact path="/puppy" render={() => <PuppyCard />} />
+                <Route exact path="/" render={() => <MainPage />} />
+                <Route exact path="/api/signup" render={() => <SignupPage />} />
               </main>
             </div>
           </div>
