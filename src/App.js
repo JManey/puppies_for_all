@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from "./components/Header/Header";
+import AddPuppy from "./components/AddPuppy/AddPuppy";
+import PuppyCard from "./components/PuppyCard/PuppyCard";
+import NavBar from "./components/NavBar/NavBar";
+// import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+export default class App extends Component {
+  // state = {
+  //   puppies: [{ name: "Ginger" }],
+  //   users: [{ name: "Justin" }]
+  // };
+
+  // componentDidMount() {
+  //   this.setState({
+  //     puppies: puppies,
+  //     users: users
+  //   });
+  // }
+
+  render() {
+    return (
+      <>
+        <div className="App">
+          <Header />
+          <h1>Welcome to Puppy Smiles!</h1>
+          <PuppyCard />
+        </div>
+      </>
+    );
+  }
 }
-
-export default App;
