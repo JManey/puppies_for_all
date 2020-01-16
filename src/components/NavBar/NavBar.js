@@ -16,13 +16,13 @@ function NavBar(props) {
 
         <ListItemText inset>
           <TypoGraphy color="inherit" variant="subtitle1">
-            <a>Posts</a>
+            Add Puppy
           </TypoGraphy>
         </ListItemText>
 
         <ListItemText inset>
           <TypoGraphy color="inherit" variant="subtitle1">
-            Contact
+            View Pups
           </TypoGraphy>
         </ListItemText>
       </ListItem>
