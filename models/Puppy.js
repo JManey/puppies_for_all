@@ -17,34 +17,37 @@ const userSchema = new Schema(
     phone: {
       type: Number,
       required: true
-    },
-    puppies: [
-      {
-        name: {
-          type: String,
-          required: true,
-          unique: true
-        },
-        age: {
-          type: Number,
-          required: true
-        },
-        weight: {
-          type: Number,
-          required: true
-        },
-        sex: {
-          type: String,
-          required: true
-        },
-        description: {
-          type: String,
-          required: true
-        }
-      }
-    ]
+    }
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", userSchema);
+const puppySchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      unique: true
+    },
+    age: {
+      type: Number,
+      required: true
+    },
+    weight: {
+      type: Number,
+      required: true
+    },
+    sex: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    user: [userSchema]
+  },
+  { timestamps: true }
+);
+
+module.exports = mongoose.model("Puppy", puppySchema);
