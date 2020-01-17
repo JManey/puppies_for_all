@@ -30,7 +30,7 @@ export default class App extends Component {
       <BrowserRouter>
         <Switch>
           <div className="App">
-            {/* <Header /> */}
+            <Header />
             <h1>Welcome to Puppy Smiles!</h1>
             <div>
               {/* should be Container */}
