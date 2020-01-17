@@ -33,9 +33,6 @@ export default function SignUpCard() {
       <CardContent>
         <SignUp />
       </CardContent>
-      <CardActions>
-        {/* <Button size="small">Learn More</Button> */}
-      </CardActions>
     </Card>
   );
 }

@@ -116,8 +116,6 @@ export default function SignUp() {
           </Grid>
           <Button
             type="submit"
-            href="/api/user/signup"
-            value="submit"
             fullWidth
             variant="contained"
             color="primary"

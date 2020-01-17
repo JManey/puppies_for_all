@@ -34,7 +34,13 @@ function NavBar(props) {
 
         <ListItemText inset>
           <TypoGraphy color="inherit" variant="subtitle1">
-            <NavButton href="/api/signup">Signup</NavButton>
+            <NavButton href="/api/users/signin">Signin</NavButton>
+          </TypoGraphy>
+        </ListItemText>
+
+        <ListItemText inset>
+          <TypoGraphy color="inherit" variant="subtitle1">
+            <NavButton href="/api/users/signupForm">Signup</NavButton>
           </TypoGraphy>
         </ListItemText>
       </ListItem>

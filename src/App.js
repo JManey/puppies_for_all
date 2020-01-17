@@ -36,7 +36,11 @@ export default class App extends Component {
               {/* should be Container */}
               <main>
                 <Route exact path="/" render={() => <MainPage />} />
-                <Route exact path="/api/signup" render={() => <SignupPage />} />
+                <Route
+                  exact
+                  path="/api/users/signupForm"
+                  render={() => <SignupPage />}
+                />
               </main>
             </div>
           </div>

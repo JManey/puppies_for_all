@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, "build")));
 
 //route to create puppy
 app.use("/api", require("./routes/api/puppies"));
-app.use("/api/user", require("./routes/api/users"));
+app.use("/api/users", require("./routes/api/users"));
 
 // The following "catch all" route (note the *)is necessary
 // for a SPA's client-side routing to properly work
