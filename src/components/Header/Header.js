@@ -12,7 +12,11 @@ const Header = props => {
           <TypoGraphy variant="h3" color="inherit" user={props.user}>
             Puppies Rock!
           </TypoGraphy>
-          <NavBar user={props.user} />
+          <NavBar
+            user={props.user}
+            handleLogout={props.handleLogout}
+            handleSignupOrLogin={props.handleSignupOrLogin}
+          />
         </Toolbar>
       </AppBar>
       ;
