@@ -4,15 +4,15 @@ import Toolbar from "@material-ui/core/Toolbar";
 import TypoGraphy from "@material-ui/core/Typography";
 import NavBar from "../NavBar/NavBar";
 
-const Header = () => {
+const Header = props => {
   return (
     <>
-      <AppBar color="primary" position="static">
-        <Toolbar>
-          <TypoGraphy variant="h3" color="inherit">
+      <AppBar color="primary" position="static" user={props.user}>
+        <Toolbar user={props.user}>
+          <TypoGraphy variant="h3" color="inherit" user={props.user}>
             Puppies Rock!
           </TypoGraphy>
-          <NavBar />
+          <NavBar user={props.user} />
         </Toolbar>
       </AppBar>
       ;

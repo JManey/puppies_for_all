@@ -9,9 +9,10 @@ module.exports = {
 
 async function signup(req, res) {
   const user = new User(req.body);
+  console.log("create user 1");
   try {
     await user.save();
-    console.log("tried to save user");
+    console.log("user is saved here create user 1");
     const token = createJWT(user);
     res.json({ token });
   } catch (err) {
@@ -27,6 +28,7 @@ async function login(req, res) {
     user.comparePassword(req.body.pw, (err, isMatch) => {
       if (isMatch) {
         const token = createJWT(user);
+        console.log(`user from controller: ${user}`);
         res.json({ token });
       } else {
         return res.status(401).json({ err: "bad credentials" });
@@ -43,6 +45,6 @@ function createJWT(user) {
   return jwt.sign(
     { user }, // data payload
     SECRET,
-    { expiresIn: "48h" }
+    { expiresIn: "24h" }
   );
 }

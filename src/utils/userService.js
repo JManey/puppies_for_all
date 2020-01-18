@@ -27,6 +27,7 @@ function getUser() {
 
 function logout() {
   tokenService.removeToken();
+  localStorage.removeItem("token");
 }
 
 function login(creds) {
