@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import userService from "../../utils/userService";
+import style from "./style.css";
 
 class SignupForm extends Component {
   state = {
@@ -44,7 +45,7 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Modal">
         <header className="header-footer">Sign Up</header>
         <form className="form-horizontal" onSubmit={this.handleSubmit}>
           <div className="form-group">
@@ -116,7 +117,9 @@ class SignupForm extends Component {
                 Sign Up
               </button>
               &nbsp;&nbsp;
-              <Link to="/">Cancel</Link>
+              <button onClick={() => this.props.history.push("/")}>
+                Cancel
+              </button>
             </div>
           </div>
         </form>

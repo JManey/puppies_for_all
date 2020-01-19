@@ -39,12 +39,6 @@ export default class App extends Component {
       <BrowserRouter>
         <Switch>
           <div className="App">
-            <Header
-              user={this.state.user}
-              handleLogout={this.handleLogout}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />
-            <h1>Welcome to Puppy Smiles!</h1>
             <div>
               {/* should be Container */}
               <main>
@@ -53,6 +47,7 @@ export default class App extends Component {
                   path="/"
                   render={() => (
                     <MainPage
+                      user={this.user}
                       handleLogout={this.handleLogout}
                       handleSignupOrLogin={this.handleSignupOrLogin}
                     />

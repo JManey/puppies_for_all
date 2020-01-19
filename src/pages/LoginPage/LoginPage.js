@@ -31,7 +31,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="LoginPage">
+      <div className="Modal">
         <header className="header-footer">Log In</header>
         <form className="form-horizontal" onSubmit={this.handleSubmit}>
           <div className="form-group">
@@ -62,7 +62,9 @@ class LoginPage extends Component {
             <div className="col-sm-12 text-center">
               <button className="btn btn-default">Log In</button>
               &nbsp;&nbsp;&nbsp;
-              <Link to="/">Cancel</Link>
+              <button onClick={() => this.props.history.push("/")}>
+                Cancel
+              </button>
             </div>
           </div>
         </form>

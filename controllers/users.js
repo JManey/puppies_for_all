@@ -23,14 +23,13 @@ async function login(req, res) {
   try {
     const user = await User.findOne({ email: req.body.email });
     console.log(user);
-    if (!user) return res.status(401).json({ err: "bad credentials" });
+    if (!user) return res.status(401).json({ err: "Invalid Login" });
     user.comparePassword(req.body.pw, (err, isMatch) => {
       if (isMatch) {
         const token = createJWT(user);
-        console.log(`user from controller: ${user}`);
         res.json({ token });
       } else {
-        return res.status(401).json({ err: "bad credentials" });
+        return res.status(401).json({ err: "Invalid Login" });
       }
     });
   } catch (err) {

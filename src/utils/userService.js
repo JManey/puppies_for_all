@@ -11,7 +11,7 @@ function signup(user) {
       .then(res => {
         if (res.ok) return res.json();
         // Probably a duplicate email
-        throw new Error("Email already taken!");
+        throw new Error("Email already exists.");
       })
       // Parameter destructuring!
       .then(({ token }) => tokenService.setToken(token))
@@ -38,7 +38,7 @@ function login(creds) {
     .then(res => {
       // Valid login if we have a status of 2xx (res.ok)
       if (res.ok) return res.json();
-      throw new Error("Bad Credentials!");
+      throw new Error("Invalid Login Attempt");
     })
     .then(({ token }) => tokenService.setToken(token));
 }
