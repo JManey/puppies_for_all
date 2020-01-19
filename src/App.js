@@ -6,7 +6,8 @@ import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-
+import NavBar from "./components/NavBar/NavBar";
+import NavTest from "./components/NavBar/NavTest";
 import PuppyView from "./components/PuppyView/PuppyView";
 
 export default class App extends Component {
@@ -36,60 +37,68 @@ export default class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <div className="App">
-            <div>
-              {/* should be Container */}
-              <main>
-                <Route
-                  exact
-                  path="/"
-                  render={() => (
-                    <MainPage
-                      user={this.user}
-                      handleLogout={this.handleLogout}
-                      handleSignupOrLogin={this.handleSignupOrLogin}
-                    />
-                  )}
-                />
+      <>
+        <BrowserRouter>
+          {/* <NavBar user={this.state.user} /> */}
+          <Header
+            user={this.state.user}
+            handleLogout={this.handleLogout}
+            handleSignupOrLogin={this.handleSignupOrLogin}
+          />
+          <Switch>
+            <div className="App">
+              <div>
+                {/* should be Container */}
+                <main>
+                  <Route
+                    exact
+                    path="/"
+                    render={() => (
+                      <MainPage
+                        user={this.user}
+                        handleLogout={this.handleLogout}
+                        handleSignupOrLogin={this.handleSignupOrLogin}
+                      />
+                    )}
+                  />
 
-                <Route
-                  exact
-                  path="/signup"
-                  render={({ history }) => (
-                    <SignupPage
-                      history={history}
-                      handleSignupOrLogin={this.handleSignupOrLogin}
-                    />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/login"
-                  render={({ history }) => (
-                    <LoginPage
-                      history={history}
-                      handleLogout={this.handleLogout}
-                      handleSignupOrLogin={this.handleSignupOrLogin}
-                    />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/logout"
-                  render={() => (
-                    <MainPage
-                      handleLogout={this.handleLogout}
-                      handleSignupOrLogin={this.handleSignupOrLogin}
-                    />
-                  )}
-                />
-              </main>
+                  <Route
+                    exact
+                    path="/signup"
+                    render={({ history }) => (
+                      <SignupPage
+                        history={history}
+                        handleSignupOrLogin={this.handleSignupOrLogin}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/login"
+                    render={({ history }) => (
+                      <LoginPage
+                        history={history}
+                        handleLogout={this.handleLogout}
+                        handleSignupOrLogin={this.handleSignupOrLogin}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/logout"
+                    render={() => (
+                      <MainPage
+                        handleLogout={this.handleLogout}
+                        handleSignupOrLogin={this.handleSignupOrLogin}
+                      />
+                    )}
+                  />
+                </main>
+              </div>
             </div>
-          </div>
-        </Switch>
-      </BrowserRouter>
+          </Switch>
+        </BrowserRouter>
+      </>
     );
   }
 }

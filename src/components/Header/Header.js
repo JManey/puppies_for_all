@@ -3,11 +3,12 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import TypoGraphy from "@material-ui/core/Typography";
 import NavBar from "../NavBar/NavBar";
+import "./style.css";
 
 const Header = props => {
   return (
     <>
-      <AppBar color="primary" position="static" user={props.user}>
+      <AppBar className="appbar" position="static" user={props.user}>
         <Toolbar user={props.user}>
           <TypoGraphy variant="h3" color="inherit" user={props.user}>
             Puppies Rock!
