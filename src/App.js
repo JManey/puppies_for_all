@@ -95,8 +95,9 @@ export default class App extends Component {
                   <Route
                     exact
                     path="/users"
-                    render={() => (
+                    render={({ history }) => (
                       <MainPage
+                        history={history}
                         user={this.state.user}
                         handleLogout={this.handleLogout}
                         handleSignupOrLogin={this.handleSignupOrLogin}
@@ -106,8 +107,9 @@ export default class App extends Component {
                   <Route
                     exact
                     path="/users/addpuppy"
-                    render={() => (
+                    render={({ history }) => (
                       <AddPuppyPage
+                        history={history}
                         user={this.state.user}
                         message="Add Puppy Page"
                       />

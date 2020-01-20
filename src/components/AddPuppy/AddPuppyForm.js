@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import userService from "../../utils/userService";
 
-class SignupForm extends Component {
+class AddPuppyForm extends Component {
   state = {
     name: "",
     age: null,
@@ -25,6 +25,7 @@ class SignupForm extends Component {
       // Let <App> know a user has signed up!
       // this.props.handleSignupOrLogin();
       // Successfully signed up - show GamePage
+
       this.props.history.push("/users");
     } catch (err) {
       // Invalid user data (probably duplicate email)
@@ -129,4 +130,4 @@ class SignupForm extends Component {
   }
 }
 
-export default SignupForm;
+export default AddPuppyForm;
