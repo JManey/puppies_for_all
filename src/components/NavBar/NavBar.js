@@ -10,6 +10,17 @@ const NavBar = props => {
         LOG OUT
       </Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <Link to="/users/addpuppy" className="NavBar-link">
+        ADD PUPPY
+      </Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;|&nbsp;&nbsp;
+      <Link to="/users" className="NavBar-link">
+        PROFILE
+      </Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <Link to="/users/pups" className="NavBar-link">
+        MY PUPS
+      </Link>
       <span className="NavBar-welcome">WELCOME, {props.user.first_name}</span>
     </div>
   ) : (

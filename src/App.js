@@ -6,9 +6,8 @@ import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import NavBar from "./components/NavBar/NavBar";
-import NavTest from "./components/NavBar/NavTest";
 import PuppyView from "./components/PuppyView/PuppyView";
+import AddPuppyPage from "./pages/AddPuppyPage/AddPuppyPage";
 
 export default class App extends Component {
   constructor() {
@@ -90,6 +89,27 @@ export default class App extends Component {
                       <MainPage
                         handleLogout={this.handleLogout}
                         handleSignupOrLogin={this.handleSignupOrLogin}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/users"
+                    render={() => (
+                      <MainPage
+                        user={this.state.user}
+                        handleLogout={this.handleLogout}
+                        handleSignupOrLogin={this.handleSignupOrLogin}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/users/addpuppy"
+                    render={() => (
+                      <AddPuppyPage
+                        user={this.state.user}
+                        message="Add Puppy Page"
                       />
                     )}
                   />
