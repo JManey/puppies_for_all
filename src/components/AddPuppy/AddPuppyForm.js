@@ -3,12 +3,16 @@ import userService from "../../utils/userService";
 
 class AddPuppyForm extends Component {
   state = {
-    name: "",
-    age: null,
-    weight: null,
-    sex: "Female",
-    description: ""
+    formData: {
+      name: "",
+      age: null,
+      weight: null,
+      sex: "Female",
+      description: ""
+    }
   };
+
+  formRef = React.createRef();
 
   handleChange = e => {
     this.props.updateMessage("");
@@ -20,25 +24,15 @@ class AddPuppyForm extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    try {
-      await userService.addPup(this.state);
-      // Let <App> know a user has signed up!
-      // this.props.handleSignupOrLogin();
-      // Successfully signed up - show GamePage
-
-      this.props.history.push("/users");
-    } catch (err) {
-      // Invalid user data (probably duplicate email)
-      this.props.updateMessage(err.message);
-    }
+    this.props.handleAddPuppy(this.state.formData);
   };
 
   isFormInvalid() {
     return !(
-      this.state.name &&
-      this.state.age &&
-      this.state.description &&
-      this.state.weight
+      this.state.formData.name &&
+      this.state.formData.age &&
+      this.state.formData.description &&
+      this.state.formData.weight
     );
   }
 
@@ -46,14 +40,18 @@ class AddPuppyForm extends Component {
     return (
       <div className="Modal">
         <header className="header-footer">Add Puppy</header>
-        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+        <form
+          ref={this.formRef}
+          className="form-horizontal"
+          onSubmit={this.handleSubmit}
+        >
           <div className="form-group">
             <div className="col-sm-12">
               <input
                 type="text"
                 className="form-control"
                 placeholder="Name"
-                value={this.state.name}
+                value={this.state.formData.name}
                 name="name"
                 onChange={this.handleChange}
               />
@@ -65,7 +63,7 @@ class AddPuppyForm extends Component {
                 type="number"
                 className="form-control"
                 placeholder="Age"
-                value={this.state.age}
+                value={this.state.formData.age}
                 name="age"
                 onChange={this.handleChange}
               />
@@ -77,7 +75,7 @@ class AddPuppyForm extends Component {
                 type="weight"
                 className="form-control"
                 placeholder="Weight"
-                value={this.state.weight}
+                value={this.state.formData.weight}
                 name="weight"
                 onChange={this.handleChange}
               />
@@ -89,7 +87,7 @@ class AddPuppyForm extends Component {
                 Sex:
                 <select
                   name="sex"
-                  value={this.state.value}
+                  value={this.state.formData.value}
                   onChange={this.handleChange}
                 >
                   <option value="Female">Female</option>
@@ -104,7 +102,7 @@ class AddPuppyForm extends Component {
                 type="description"
                 className="form-control"
                 placeholder="Description"
-                value={this.state.description}
+                value={this.state.formData.description}
                 name="description"
                 onChange={this.handleChange}
               />
@@ -116,7 +114,7 @@ class AddPuppyForm extends Component {
                 className="btn btn-default"
                 // disabled={this.isFormInvalid()}
               >
-                Add {this.state.name}
+                Add {this.state.formData.name}
               </button>
               &nbsp;&nbsp;
               <button onClick={() => this.props.history.push("/")}>

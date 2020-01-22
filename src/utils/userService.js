@@ -45,22 +45,9 @@ function login(creds) {
     .then(({ token }) => tokenService.setToken(token));
 }
 
-function addPup(puppy) {
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-      Authorization: "Bearer " + tokenService.getToken()
-    },
-    body: JSON.stringify(puppy)
-  };
-  return fetch("/api/puppy/", options).then(res => res.json());
-}
-
 export default {
   signup,
   getUser,
   logout,
-  login,
-  addPup
+  login
 };

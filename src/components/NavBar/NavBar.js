@@ -14,8 +14,8 @@ const NavBar = props => {
         ADD PUPPY
       </Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;|&nbsp;&nbsp;
-      <Link to="/users" className="NavBar-link">
-        PROFILE
+      <Link to="/puppies" className="NavBar-link">
+        Puppies!
       </Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <Link to="/users/pups" className="NavBar-link">
@@ -31,6 +31,14 @@ const NavBar = props => {
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <Link to="/signup" className="NavBar-link">
         SIGN UP
+      </Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;|&nbsp;&nbsp;
+      <Link
+        to="/puppies"
+        className="NavBar-link"
+        onClick={props.handleGetPuppies}
+      >
+        Puppies!
       </Link>
     </div>
   );

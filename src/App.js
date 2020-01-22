@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
 import userService from "./utils/userService";
+import puppyService from "./utils/puppyService";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import PuppyView from "./components/PuppyView/PuppyView";
 import AddPuppyPage from "./pages/AddPuppyPage/AddPuppyPage";
+import PuppyIndexPage from "./pages/PuppyIndexPage/PuppyIndexPage";
+import PuppyShowPage from "./pages/PuppyShowPage/PuppyShowPage";
 
 export default class App extends Component {
   constructor() {
@@ -15,15 +17,15 @@ export default class App extends Component {
 
     this.state = {
       puppies: [],
+      puppy: null,
       user: userService.getUser()
     };
   }
-  // componentDidMount() {
-  //   this.setState({
-  //     puppies: puppies,
-  //     users: users
-  //   });
-  // }
+
+  async componentDidMount() {
+    const puppies = await puppyService.getPuppies();
+    this.setState({ puppies });
+  }
 
   handleLogout = () => {
     userService.logout();
@@ -32,6 +34,21 @@ export default class App extends Component {
 
   handleSignupOrLogin = () => {
     this.setState({ user: userService.getUser() });
+  };
+
+  handleAddPuppy = async newPuppyData => {
+    const newPuppy = await puppyService.create(newPuppyData);
+    this.setState(
+      state => ({
+        puppies: [...state.puppies, newPuppy]
+      }),
+      // Using cb to wait for state to update before rerouting
+      () => this.props.history.push("/")
+    );
+  };
+
+  handleGetPuppies = () => {
+    this.setState({ puppies: puppyService.getPuppies() });
   };
 
   render() {
@@ -111,7 +128,33 @@ export default class App extends Component {
                       <AddPuppyPage
                         history={history}
                         user={this.state.user}
+                        handleAddPuppy={this.handleAddPuppy}
+                        handleGetPuppies={this.handleGetPuppies}
                         message="Add Puppy Page"
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/puppies"
+                    render={({ history }) => (
+                      <PuppyIndexPage
+                        history={history}
+                        puppies={this.state.puppies}
+                        user={this.state.user}
+                        message="Lots of Puppies!"
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/puppies/details"
+                    render={({ history }) => (
+                      <PuppyShowPage
+                        history={history}
+                        puppies={this.state.puppies}
+                        user={this.state.user}
+                        message="Puppy show page!"
                       />
                     )}
                   />

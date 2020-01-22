@@ -17,6 +17,7 @@ const Header = props => {
             user={props.user}
             handleLogout={props.handleLogout}
             handleSignupOrLogin={props.handleSignupOrLogin}
+            handleGetPuppies={props.handleGetPuppies}
           />
         </Toolbar>
       </AppBar>
