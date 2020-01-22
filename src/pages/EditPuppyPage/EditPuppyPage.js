@@ -11,6 +11,7 @@ class EditPuppyPage extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.props);
     this.props.handleUpdatePuppy(this.state.formData);
   };
 
@@ -26,6 +27,7 @@ class EditPuppyPage extends Component {
   };
 
   render() {
+    console.log(this.props.location);
     return (
       <>
         <h1>Edit Puppy</h1>
@@ -81,7 +83,7 @@ class EditPuppyPage extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label>Upload Photo</label>
             <input
               type="file"
@@ -90,7 +92,7 @@ class EditPuppyPage extends Component {
               value={this.state.formData.url}
               onChange={this.handleChange}
             />
-          </div>
+          </div> */}
           <button
             type="submit"
             className="btn btn-xs"
@@ -99,7 +101,7 @@ class EditPuppyPage extends Component {
             SAVE PUPPY
           </button>
           &nbsp;&nbsp;
-          <Link to="/">CANCEL</Link>
+          <Link to="/puppies">CANCEL</Link>
         </form>
       </>
     );

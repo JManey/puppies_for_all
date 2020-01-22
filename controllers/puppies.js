@@ -6,8 +6,15 @@ module.exports = {
   addPup,
   index,
   show,
-  update
+  update,
+  deleteOne
 };
+
+async function deleteOne(req, res) {
+  console.log("controller delete ", req.params.id);
+  const deletedPuppy = await Puppy.findByIdAndRemove(req.params.id);
+  res.status(200).json(deletedPuppy);
+}
 
 async function update(req, res) {
   const updatedPuppy = await Puppy.findByIdAndUpdate(req.params.id, req.body, {
