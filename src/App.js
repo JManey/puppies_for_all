@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import userService from "./utils/userService";
 import puppyService from "./utils/puppyService";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
