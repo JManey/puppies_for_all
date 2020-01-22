@@ -5,7 +5,7 @@ import puppyService from "./utils/puppyService";
 import { Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
-import SignupPage from "./pages/SignupPage/SignupPage";
+import SignupPage from "./pages/SignupPage/SignupPage.js";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import AddPuppyPage from "./pages/AddPuppyPage/AddPuppyPage";
 import PuppyIndexPage from "./pages/PuppyIndexPage/PuppyIndexPage";
