@@ -5,7 +5,7 @@ import puppyService from "./utils/puppyService";
 import { Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
-import SignupPage from "./pages/SignupPage/SignupPage.js";
+import SUPage from "./pages/SUPage/SUPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import AddPuppyPage from "./pages/AddPuppyPage/AddPuppyPage";
 import PuppyIndexPage from "./pages/PuppyIndexPage/PuppyIndexPage";
@@ -98,7 +98,7 @@ export default class App extends Component {
                   exact
                   path="/signup"
                   render={({ history }) => (
-                    <SignupPage
+                    <SUPage
                       history={history}
                       handleSignupOrLogin={this.handleSignupOrLogin}
                     />
