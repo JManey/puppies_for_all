@@ -1,0 +1,7 @@
+.cards {
+  max-width: 20em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+}

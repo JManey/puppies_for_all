@@ -1,22 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import "./style.css";
+import Button from "react-bootstrap/Button";
 
 function PuppyShowCard(props) {
   let puppy = props.puppy;
   return (
-    <div className="panel panel-default">
-      <div className="panel-heading">
-        <h3 className="panel-title">{props.puppy.name}</h3>
-      </div>
-      <div className="panel-body">
-        <dl>
-          <dt>Description</dt>
-          <dd>{props.puppy.description}</dd>
-          <dt>Age</dt>
-          <dd>{props.puppy.age}</dd>
-        </dl>
-      </div>
-      <div className="panel-footer">
+    <Card bg="warning">
+      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Body>
+        <Card.Title>{props.puppy.name}</Card.Title>
+
+        <Card.Text>Description</Card.Text>
+        <Card.Text>{props.puppy.description}</Card.Text>
+        <Card.Text>Age</Card.Text>
+        <Card.Text>{props.puppy.age}</Card.Text>
+
         <button
           className="btn btn-xs btn-danger margin-left-10"
           onClick={() => props.handleDeletePuppy(props.puppy._id)}
@@ -24,17 +24,20 @@ function PuppyShowCard(props) {
           DELETE
         </button>
         <Link
+          className="btn"
           to={{
             pathname: "/puppies/edit",
             state: { puppy }
           }}
         >
-          EDIT
+          <Button>EDIT</Button>
         </Link>
 
-        <Link to="/puppies">RETURN TO LIST</Link>
-      </div>
-    </div>
+        <Link to="/puppies">
+          <Button>RETURN TO LIST</Button>
+        </Link>
+      </Card.Body>
+    </Card>
   );
 }
 
