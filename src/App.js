@@ -3,7 +3,6 @@ import "./App.css";
 import userService from "./utils/userService";
 import puppyService from "./utils/puppyService";
 import { Switch, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
 import SUPage from "./pages/SUPage/SUPage";
 import LoginPage from "./pages/LoginPage/LoginPage";

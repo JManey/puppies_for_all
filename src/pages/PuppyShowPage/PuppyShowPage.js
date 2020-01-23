@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./PuppyShowPage.css";
 import PuppyShowCard from "../../components/PuppyShowCard/PuppyShowCard";
 

@@ -6,64 +6,91 @@ import Nav from "react-bootstrap/Nav";
 
 const NavBar = props => {
   let nav = props.user ? (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="info" expand="lg" sticky="top">
       <Navbar.Brand>
-        <Link to="/">PUPPIES FOR ALL</Link>
+        <Nav.Link to="/" className="text-danger">
+          PUPPIES FOR ALL
+        </Nav.Link>
       </Navbar.Brand>
-      <Navbar.Toggle ria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link>
-            <Link to="" className="NavBar-link" onClick={props.handleLogout}>
-              LOG OUT
-            </Link>
+      <Navbar.Toggle
+        ria-controls="basic-navbar-nav"
+        className="btn-outline-danger "
+      />
+      <Navbar.Collapse id="basic-navbar-nav ">
+        <Nav className="navbar-nav ml-auto ">
+          <Nav.Link
+            to="/"
+            className="NavBar-link btn btn-outline-danger text-danger"
+            onClick={props.handleLogout}
+          >
+            {/* <Link to="" className="NavBar-link" onClick={props.handleLogout}> */}
+            LOG OUT
+            {/* </Link> */}
           </Nav.Link>
-          <Nav.Link>
-            <Link to="/users/addpuppy" className="NavBar-link">
-              ADD PUPPY
-            </Link>
+          <Nav.Link
+            to="/users/addpuppy"
+            className="NavBar-link btn btn-outline-danger text-danger"
+          >
+            ADD PUPPY
           </Nav.Link>
-          <Nav.Link>
-            <Link to="/puppies" className="NavBar-link">
-              Puppies!
-            </Link>
+          <Nav.Link
+            to="/puppies"
+            className="NavBar-link btn btn-outline-danger text-danger"
+          >
+            PUPPIES!
           </Nav.Link>
-          <Nav.Link>
-            <Link to="/users/pups" className="NavBar-link">
-              MY PUPS
-            </Link>
+          <Nav.Link
+            to="/users/pups"
+            className="NavBar-link btn btn-outline-danger text-danger"
+          >
+            MY PUPS
           </Nav.Link>
-          <span className="NavBar-welcome">
-            WELCOME, {props.user.first_name}
-          </span>
+          <Navbar.Text className="text-danger ml-3">
+            WELCOME, {props.user.first_name.toUpperCase()}
+          </Navbar.Text>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
   ) : (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Toggle ria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
-      <Nav className="mr-auto">
-        <Nav.Link>
-          <Link to="/login" className="NavBar-link">
-            LOG IN
-          </Link>
+    <Navbar bg="info" expand="lg" sticky="top">
+      <Navbar.Brand>
+        <Nav.Link to="/" className=" text-danger">
+          PUPPIES FOR ALL
         </Nav.Link>
-        <Nav.Link>
-          <Link to="/signup" className="NavBar-link">
-            SIGN UP
-          </Link>
-        </Nav.Link>
-        <Nav.Link>
-          <Link
-            to="/puppies"
-            className="NavBar-link"
-            onClick={props.handleGetPuppies}
-          >
-            Puppies!
-          </Link>
-        </Nav.Link>
-      </Nav>
+      </Navbar.Brand>
+      <Navbar.Toggle
+        ria-controls="basic-navbar-nav"
+        className="btn-outline-danger"
+      />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="navbar-nav ml-auto">
+          <Nav.Link>
+            <Link
+              to="/login"
+              className="NavBar-link btn btn-outline-danger text-danger"
+            >
+              LOG IN
+            </Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link
+              to="/signup"
+              className="NavBar-link btn btn-outline-danger text-danger"
+            >
+              SIGN UP
+            </Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link
+              to="/puppies"
+              className="NavBar-link btn btn-outline-danger text-danger"
+              onClick={props.handleGetPuppies}
+            >
+              Puppies!
+            </Link>
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 
