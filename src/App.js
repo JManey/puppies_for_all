@@ -11,6 +11,8 @@ import AddPuppyPage from "./pages/AddPuppyPage/AddPuppyPage";
 import PuppyIndexPage from "./pages/PuppyIndexPage/PuppyIndexPage";
 import PuppyShowPage from "./pages/PuppyShowPage/PuppyShowPage";
 import EditPuppyPage from "./pages/EditPuppyPage/EditPuppyPage";
+import "bootstrap/dist/css/bootstrap.min.css";
+import NavBar from "./components/NavBar/NavBar";
 
 export default class App extends Component {
   state = {
@@ -72,7 +74,8 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <Header
+        {/* <BootNav /> */}
+        <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
           handleSignupOrLogin={this.handleSignupOrLogin}
