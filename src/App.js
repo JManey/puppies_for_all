@@ -10,6 +10,7 @@ import AddPuppyPage from "./pages/AddPuppyPage/AddPuppyPage";
 import PuppyIndexPage from "./pages/PuppyIndexPage/PuppyIndexPage";
 import PuppyShowPage from "./pages/PuppyShowPage/PuppyShowPage";
 import EditPuppyPage from "./pages/EditPuppyPage/EditPuppyPage";
+import MyPupsPage from "./pages/MyPupsPage/MyPupsPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar/NavBar";
 
@@ -180,6 +181,16 @@ export default class App extends Component {
                   path="/puppies/edit"
                   render={({ location }) => (
                     <EditPuppyPage
+                      location={location}
+                      handleUpdatePuppy={this.handleUpdatePuppy}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/users/pups"
+                  render={({ location }) => (
+                    <MyPupsPage
                       location={location}
                       handleUpdatePuppy={this.handleUpdatePuppy}
                     />

@@ -4,7 +4,6 @@ import "./style.css";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import CardDeck from "react-bootstrap/CardDeck";
 
 function PuppyIndexCard(props) {
   let puppy = props.puppy;
@@ -30,13 +29,12 @@ function PuppyIndexCard(props) {
         {/* </Card.Text> */}
       </Card.Body>
       <Link
-        className="text-danger btn-outline-info"
         to={{
           pathname: "/puppies/details",
           state: { puppy }
         }}
       >
-        More Details
+        <Button className="text-danger ">More Details</Button>
       </Link>
     </Card>
     // </CardDeck>

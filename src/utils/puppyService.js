@@ -13,7 +13,7 @@ function create(puppy) {
     };
     return fetch(BASE_URL, options)
       .then(res => res.json())
-      .then(getPuppies());
+      .then(() => getPuppies());
   } catch (err) {
     console.log("error from addPuppy function in puppyservice", err);
   }

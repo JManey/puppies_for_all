@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 class EditPuppyPage extends Component {
   state = {
@@ -27,11 +30,10 @@ class EditPuppyPage extends Component {
   };
 
   render() {
-    console.log(this.props.location);
     return (
-      <>
-        <h1>Edit Puppy</h1>
-        <form
+      <Card className="carddeck" bg="warning">
+        <Card.Title>Edit Puppy</Card.Title>
+        <Form
           ref={this.formRef}
           autoComplete="off"
           onSubmit={this.handleSubmit}
@@ -93,17 +95,19 @@ class EditPuppyPage extends Component {
               onChange={this.handleChange}
             />
           </div> */}
-          <button
+          <Button
             type="submit"
             className="btn btn-xs"
             disabled={this.state.invalidForm}
           >
             SAVE PUPPY
-          </button>
+          </Button>
           &nbsp;&nbsp;
-          <Link to="/puppies">CANCEL</Link>
-        </form>
-      </>
+          <Link to="/puppies">
+            <Button>CANCEL</Button>
+          </Link>
+        </Form>
+      </Card>
     );
   }
 }

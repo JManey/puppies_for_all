@@ -1,0 +1,16 @@
+.carousel {
+  width: 80vw;
+  height: 80vh;
+}
+
+.center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+Carousel.Item img {
+  height: auto;
+  max-width: 100%;
+  margin: auto;
+  width: 100%;
+}

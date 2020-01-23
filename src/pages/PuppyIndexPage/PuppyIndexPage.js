@@ -7,7 +7,7 @@ function PuppyIndexPage(props) {
   return (
     <>
       <h1>Puppies Index!</h1>
-      <CardDeck className="carddeck">
+      <CardDeck className="mx-auto carddeck">
         {props.puppies.map(puppy => (
           <PuppyIndexCard
             puppy={puppy}
