@@ -2,5 +2,6 @@
   display: flex;
   margin: 0 auto;
   justify-content: center;
-  width: 30em;
+  width: 100px;
+  /* min-width: 50em; */
 }

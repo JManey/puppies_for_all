@@ -25,6 +25,10 @@ export default class App extends Component {
     const puppies = await puppyService.getPuppies();
     this.setState({ puppies });
   }
+  async componentDidUpdate() {
+    const puppies = await puppyService.getPuppies();
+    this.setState({ puppies });
+  }
 
   handleLogout = () => {
     userService.logout();

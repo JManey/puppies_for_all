@@ -9,7 +9,11 @@ function PuppyIndexCard(props) {
   let puppy = props.puppy;
   return (
     // <CardDeck className="cards">
-    <Card style={{ width: "20rem" }} bg="warning">
+    <Card
+      className="mt-4 cardStyle"
+      style={{ minWidth: "200px", maxWidth: "300px" }}
+      bg="warning"
+    >
       <Card.Img variant="top" src="holder.js/100px180" />
       <Card.Body>
         <Card.Title>{props.puppy.name}</Card.Title>
