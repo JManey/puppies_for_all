@@ -43,7 +43,7 @@ class AddPuppyPage extends Component {
 
   render(history) {
     return (
-      <div className="Modal">
+      <div className="Modal mx-auto">
         <header className="header-footer">Add Puppy</header>
         <form
           ref={this.formRef}

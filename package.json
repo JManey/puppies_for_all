@@ -1,9 +1,6 @@
 {
   "name": "puppies-for-all",
   "version": "0.1.0",
-  "engines": {
-    "node": "12.13.0"
-  },
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.8.3",
@@ -20,7 +17,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.7",
     "morgan": "^1.9.1",
-    "node": "^13.6.0",
+    "node": "^12.14.0",
     "path": "^0.12.7",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
