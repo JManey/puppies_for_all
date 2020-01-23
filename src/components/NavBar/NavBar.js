@@ -8,8 +8,10 @@ const NavBar = props => {
   let nav = props.user ? (
     <Navbar bg="info" expand="lg" sticky="top">
       <Navbar.Brand>
-        <Nav.Link to="/" className="text-danger">
-          PUPPIES FOR ALL
+        <Nav.Link>
+          <Link to="/" className="text-danger">
+            PUPPIES FOR ALL
+          </Link>
         </Nav.Link>
       </Navbar.Brand>
       <Navbar.Toggle
@@ -64,8 +66,10 @@ const NavBar = props => {
   ) : (
     <Navbar bg="info" expand="lg" sticky="top">
       <Navbar.Brand>
-        <Nav.Link to="/" className=" text-danger">
-          PUPPIES FOR ALL
+        <Nav.Link>
+          <Link to="/" className=" text-danger">
+            PUPPIES FOR ALL
+          </Link>
         </Nav.Link>
       </Navbar.Brand>
       <Navbar.Toggle
