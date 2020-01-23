@@ -34,7 +34,7 @@ function PuppyIndexCard(props) {
           state: { puppy }
         }}
       >
-        <Button className="text-danger ">More Details</Button>
+        <Button className="">More Details</Button>
       </Link>
     </Card>
     // </CardDeck>
