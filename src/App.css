@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+.bg-image {
+  background-image: url("./images/oh-yeah.jpg");
+  width: 100vw;
+  height: 100vh;
+  background-color: forestgreen;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

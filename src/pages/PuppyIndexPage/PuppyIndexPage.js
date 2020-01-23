@@ -1,12 +1,13 @@
 import React from "react";
 import "./PuppyIndexPage.css";
 import PuppyIndexCard from "../../components/PuppyIndexCard/PuppyIndexCard";
+import CardDeck from "react-bootstrap/CardDeck";
 
 function PuppyIndexPage(props) {
   return (
     <>
       <h1>Puppies Index!</h1>
-      <div className="PuppyIndexPage-grid">
+      <CardDeck className="carddeck">
         {props.puppies.map(puppy => (
           <PuppyIndexCard
             puppy={puppy}
@@ -14,7 +15,7 @@ function PuppyIndexPage(props) {
             key={puppy._id}
           />
         ))}
-      </div>
+      </CardDeck>
     </>
   );
 }

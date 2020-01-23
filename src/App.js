@@ -83,7 +83,7 @@ export default class App extends Component {
           <div className="App">
             <div>
               {/* should be Container */}
-              <main>
+              <main className="bg-image">
                 <Route
                   exact
                   path="/"

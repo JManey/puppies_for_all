@@ -18,32 +18,42 @@ const NavBar = props => {
       />
       <Navbar.Collapse id="basic-navbar-nav ">
         <Nav className="navbar-nav ml-auto ">
-          <Nav.Link
-            to="/"
-            className="NavBar-link btn btn-outline-danger text-danger"
-            onClick={props.handleLogout}
-          >
-            {/* <Link to="" className="NavBar-link" onClick={props.handleLogout}> */}
-            LOG OUT
-            {/* </Link> */}
+          <Nav.Link>
+            <Link
+              to="/"
+              className="NavBar-link btn btn-outline-danger text-danger"
+              onClick={props.handleLogout}
+            >
+              {/* <Link to="" className="NavBar-link" onClick={props.handleLogout}> */}
+              LOG OUT
+              {/* </Link> */}
+            </Link>
           </Nav.Link>
-          <Nav.Link
-            to="/users/addpuppy"
-            className="NavBar-link btn btn-outline-danger text-danger"
-          >
-            ADD PUPPY
+          <Nav.Link>
+            <Link
+              to="/users/addpuppy"
+              className="NavBar-link btn btn-outline-danger text-danger"
+            >
+              ADD PUPPY
+            </Link>
           </Nav.Link>
-          <Nav.Link
-            to="/puppies"
-            className="NavBar-link btn btn-outline-danger text-danger"
-          >
-            PUPPIES!
+          <Nav.Link>
+            <Link
+              to="/puppies"
+              className="NavBar-link btn btn-outline-danger text-danger"
+            >
+              PUPPIES!
+            </Link>
           </Nav.Link>
-          <Nav.Link
-            to="/users/pups"
-            className="NavBar-link btn btn-outline-danger text-danger"
-          >
-            MY PUPS
+          <Nav.Link>
+            <Link
+              to="/users/pups"
+              className="NavBar-link btn btn-outline-danger
+              text-danger"
+            >
+              {" "}
+              MY PUPS
+            </Link>
           </Nav.Link>
           <Navbar.Text className="text-danger ml-3">
             WELCOME, {props.user.first_name.toUpperCase()}
