@@ -22,12 +22,14 @@ export default class App extends Component {
   };
 
   async componentDidMount() {
-    const puppies = await puppyService.getPuppies();
-    this.setState({ puppies });
+    try {
+      const puppies = await puppyService.getPuppies();
+      this.setState({ puppies });
+    } catch (err) {
+      console.log("error with cdm", err);
+    }
   }
-  // async componentDidUpdate() {
-  //   const puppies = await puppyService.getPuppies();
-  //   this.setState({ puppies });
+
   // }
 
   handleLogout = () => {
@@ -42,13 +44,16 @@ export default class App extends Component {
   handleAddPuppy = async newPuppyData => {
     const newPuppy = await puppyService.create(newPuppyData);
     this.setState(
-      state => ({
-        puppies: [...state.puppies, newPuppy]
+      prevState => ({
+        ...prevState.puppies,
+        puppies: newPuppy
       }),
       // Using cb to wait for state to update before rerouting
-      () => this.props.history.push("/puppies")
+      () => {
+        console.log(this.state.puppies);
+        this.props.history.push("/users/pups");
+      }
     );
-    this.handleGetPuppies();
   };
 
   handleUpdatePuppy = async updatedPupData => {
@@ -57,19 +62,18 @@ export default class App extends Component {
       p._id === updatedPuppy._id ? updatedPuppy : p
     );
     this.setState({ puppies: newPuppiesArray }, () =>
-      this.props.history.push("/")
+      this.props.history.push("/users/pups")
     );
   };
 
   handleDeletePuppy = async (id, user) => {
     await puppyService.deleteOne(id, user);
-    console.log(id, "called handledeletepuppy");
     this.setState(
       state => ({
         // Yay, filter returns a NEW array
         puppies: state.puppies.filter(p => p._id !== id)
       }),
-      () => this.props.history.push("/")
+      () => this.props.history.push("/users/pups")
     );
   };
 
