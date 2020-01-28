@@ -19,7 +19,9 @@ function PuppyShowCard(props) {
 
         <button
           className="btn btn-xs btn-danger margin-left-10"
-          onClick={() => props.handleDeletePuppy(props.puppy._id)}
+          onClick={() =>
+            props.handleDeletePuppy(props.puppy._id, props.user.email)
+          }
         >
           DELETE
         </button>

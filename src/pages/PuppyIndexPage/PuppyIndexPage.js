@@ -10,6 +10,7 @@ function PuppyIndexPage(props) {
       <CardDeck className="mx-auto carddeck container-fluid">
         {props.puppies.map(puppy => (
           <PuppyIndexCard
+            user={props.user}
             puppy={puppy}
             handleDeletePuppy={props.handleDeletePuppy}
             key={puppy._id}

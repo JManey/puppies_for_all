@@ -11,8 +11,12 @@ module.exports = {
 };
 
 async function deleteOne(req, res) {
-  console.log("controller delete ", req.params.id);
+  // console.log("controller delete ", req.params.id);
+  const user = await User.findOne({ puppyRef: req.params.id });
+  // console.log(user);
+  const removedPupUser = await user.puppyRef.pull(req.params.id);
   const deletedPuppy = await Puppy.findByIdAndRemove(req.params.id);
+  console.log(removedPupUser, "pulled pupref form user array");
   res.status(200).json(deletedPuppy);
 }
 

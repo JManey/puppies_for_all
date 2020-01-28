@@ -25,10 +25,10 @@ export default class App extends Component {
     const puppies = await puppyService.getPuppies();
     this.setState({ puppies });
   }
-  async componentDidUpdate() {
-    const puppies = await puppyService.getPuppies();
-    this.setState({ puppies });
-  }
+  // async componentDidUpdate() {
+  //   const puppies = await puppyService.getPuppies();
+  //   this.setState({ puppies });
+  // }
 
   handleLogout = () => {
     userService.logout();
@@ -48,6 +48,7 @@ export default class App extends Component {
       // Using cb to wait for state to update before rerouting
       () => this.props.history.push("/puppies")
     );
+    this.handleGetPuppies();
   };
 
   handleUpdatePuppy = async updatedPupData => {
@@ -60,8 +61,9 @@ export default class App extends Component {
     );
   };
 
-  handleDeletePuppy = async id => {
-    await puppyService.deleteOne(id);
+  handleDeletePuppy = async (id, user) => {
+    await puppyService.deleteOne(id, user);
+    console.log(id, "called handledeletepuppy");
     this.setState(
       state => ({
         // Yay, filter returns a NEW array
@@ -174,6 +176,7 @@ export default class App extends Component {
                   path="/puppies/details"
                   render={({ location }) => (
                     <PuppyShowPage
+                      user={this.state.user}
                       location={location}
                       handleDeletePuppy={this.handleDeletePuppy}
                       handleEditPuppy={this.handleEditPuppy}
@@ -195,6 +198,8 @@ export default class App extends Component {
                   path="/users/pups"
                   render={({ location }) => (
                     <MyPupsPage
+                      puppies={this.state.puppies}
+                      user={this.state.user}
                       location={location}
                       handleUpdatePuppy={this.handleUpdatePuppy}
                     />

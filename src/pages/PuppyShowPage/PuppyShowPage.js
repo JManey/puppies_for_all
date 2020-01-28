@@ -13,6 +13,7 @@ function PuppyShowPage(props) {
         <PuppyShowCard
           key={puppy._id}
           puppy={puppy}
+          user={props.user}
           handleDeletePuppy={props.handleDeletePuppy}
           handleEditPuppy={props.handleEditPuppy}
         />

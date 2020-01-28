@@ -18,15 +18,14 @@ function create(puppy) {
     console.log("error from addPuppy function in puppyservice", err);
   }
 }
-
-function getPuppies() {
-  return fetch(BASE_URL).then(res => res.json());
-}
-
 export function deleteOne(id) {
   return fetch(`${BASE_URL}${id}`, {
     method: "DELETE"
   }).then(res => res.json());
+}
+
+function getPuppies() {
+  return fetch(BASE_URL).then(res => res.json());
 }
 
 export function getPuppy(puppy) {
