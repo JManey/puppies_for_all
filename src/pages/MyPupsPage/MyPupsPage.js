@@ -12,22 +12,29 @@ function MyPupsPage(props) {
   let allPups = props.puppies;
   console.log("allpups", allPups);
   let userPups = props.user.puppyRef;
-  let myPups = Object.fromEntries(
-    Object.entries(allPups).filter(([key, val]) => userPups.includes(key))
-  );
+  let myPups = [];
 
-  console.log(myPups);
+  userPups.forEach(pup => {
+    allPups.forEach(eachOne => {
+      console.log("each", eachOne);
+      if (eachOne._id === pup) {
+        myPups.push(eachOne);
+      }
+    });
+  });
+
+  console.log("myPups", myPups);
 
   // userPups.forEach(pup => {
   //   console.log(pup);
   //   myPups.push(allPups.puppyRef.filter(pup));
   // });
 
-  return myPups ? (
+  return myPups.length ? (
     <>
       <h1>Puppies Index!</h1>
       <CardDeck className="mx-auto carddeck container-fluid">
-        {userPups.map(puppy => (
+        {myPups.map(puppy => (
           <PuppyIndexCard
             puppy={puppy}
             handleDeletePuppy={props.handleDeletePuppy}
