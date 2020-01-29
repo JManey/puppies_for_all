@@ -17,20 +17,35 @@ import NavBar from "./components/NavBar/NavBar";
 export default class App extends Component {
   state = {
     puppies: [],
-    puppy: null,
-    user: userService.getUser()
+    // puppy: null,
+    user: null
   };
 
   async componentDidMount() {
     try {
       const puppies = await puppyService.getPuppies();
-      this.setState({ puppies });
+      const user = await userService.getUser();
+      const id = user._id;
+      const userWithPups = await userService.getUserPups(id);
+      this.setState({ puppies: puppies, user: userWithPups });
     } catch (err) {
       console.log("error with cdm", err);
     }
   }
 
+  // async componentDidUpdate() {
+  //   try {
+  //     const puppies = await puppyService.getPuppies();
+  //     const user = await userService.getUser();
+  //     this.setState({ puppies: puppies, user: user });
+  //   } catch (err) {
+  //     console.log("error with cdm", err);
+  //   }
   // }
+
+  handleGetUser = async () => {
+    this.setState({ user: userService.getUser() });
+  };
 
   handleLogout = () => {
     userService.logout();
@@ -42,18 +57,28 @@ export default class App extends Component {
   };
 
   handleAddPuppy = async newPuppyData => {
-    const newPuppy = await puppyService.create(newPuppyData);
-    this.setState(
-      prevState => ({
-        ...prevState.puppies,
-        puppies: newPuppy
-      }),
-      // Using cb to wait for state to update before rerouting
-      () => {
-        console.log(this.state.puppies);
-        this.props.history.push("/users/pups");
-      }
-    );
+    // const newPuppy =
+    await puppyService.create(newPuppyData);
+    console.log(this.state.user);
+    const id = this.state.user._id;
+    try {
+      const puppies = await puppyService.getPuppies();
+      const user = await userService.getUserPups(id);
+      console.log("hello&&&&&*************", user);
+      this.setState(
+        {
+          user: user,
+          puppies: puppies
+        },
+        () => {
+          // console.log("***********************", user);
+          // console.log("***********************", this.state.user);
+          this.props.history.push("/users/pups");
+        }
+      );
+    } catch (err) {
+      console.log("error with cdm", err);
+    }
   };
 
   handleUpdatePuppy = async updatedPupData => {
@@ -78,7 +103,11 @@ export default class App extends Component {
   };
 
   handleGetPuppies = () => {
-    this.setState({ puppies: puppyService.getPuppies() });
+    console.log("getpuppies from app");
+    this.setState({
+      puppies: puppyService.getPuppies(),
+      user: userService.getUser()
+    });
   };
 
   render() {
@@ -88,6 +117,7 @@ export default class App extends Component {
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
+          handleGetPuppies={this.handleGetPuppies}
           handleSignupOrLogin={this.handleSignupOrLogin}
         />
         <Switch>
@@ -158,7 +188,7 @@ export default class App extends Component {
                       history={history}
                       user={this.state.user}
                       handleAddPuppy={this.handleAddPuppy}
-                      handleGetPuppies={this.handleGetPuppies}
+                      // handleGetPuppies={this.handleGetPuppies}
                       message="Add Puppy Page"
                     />
                   )}

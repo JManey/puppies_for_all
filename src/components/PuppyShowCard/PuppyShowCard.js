@@ -6,12 +6,15 @@ import Button from "react-bootstrap/Button";
 
 function PuppyShowCard(props) {
   let puppy = props.puppy;
-  return (
+  console.log("user on show card", props.user);
+  console.log(props.puppy._id);
+  const puppyUser = props.user.puppyRef.includes(props.puppy._id);
+
+  return puppyUser ? (
     <Card bg="warning">
       <Card.Img variant="top" src="holder.js/100px180" />
       <Card.Body>
         <Card.Title>{props.puppy.name}</Card.Title>
-
         <Card.Text>Description</Card.Text>
         <Card.Text>{props.puppy.description}</Card.Text>
         <Card.Text>Age</Card.Text>
@@ -34,7 +37,20 @@ function PuppyShowCard(props) {
         >
           <Button>EDIT</Button>
         </Link>
-
+        <Link to="/puppies">
+          <Button>RETURN TO LIST</Button>
+        </Link>
+      </Card.Body>
+    </Card>
+  ) : (
+    <Card bg="warning">
+      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Body>
+        <Card.Title>{props.puppy.name}</Card.Title>
+        <Card.Text>Description</Card.Text>
+        <Card.Text>{props.puppy.description}</Card.Text>
+        <Card.Text>Age</Card.Text>
+        <Card.Text>{props.puppy.age}</Card.Text>
         <Link to="/puppies">
           <Button>RETURN TO LIST</Button>
         </Link>

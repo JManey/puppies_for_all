@@ -4,8 +4,14 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login
+  login,
+  show
 };
+
+async function show(req, res) {
+  const puppy = await User.findById(req.params.id);
+  res.status(200).json(puppy);
+}
 
 async function signup(req, res) {
   const user = new User(req.body);

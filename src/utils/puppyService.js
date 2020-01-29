@@ -1,4 +1,5 @@
 import tokenService from "./tokenService";
+// import userService from "./userService";
 const BASE_URL = "/api/puppy/";
 
 function create(puppy) {
@@ -11,9 +12,9 @@ function create(puppy) {
       },
       body: JSON.stringify(puppy)
     };
-    return fetch(BASE_URL, options)
-      .then(res => res.json())
-      .then(() => getPuppies());
+    return fetch(BASE_URL, options).then(res => res.json(puppy));
+    // .then(() => getPuppies());
+    // .then(() => userService.getUser());
   } catch (err) {
     console.log("error from addPuppy function in puppyservice", err);
   }

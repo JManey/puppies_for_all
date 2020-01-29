@@ -1,5 +1,4 @@
 import tokenService from "./tokenService";
-// const tokenService = require("./tokenService");
 
 const BASE_URL = "/api/users/";
 
@@ -26,6 +25,10 @@ function getUser() {
   return tokenService.getUserFromToken();
 }
 
+function getUserPups(id) {
+  return fetch(`${BASE_URL}${id}`).then(res => res.json());
+}
+
 function logout() {
   tokenService.removeToken();
   localStorage.removeItem("token");
@@ -49,5 +52,6 @@ export default {
   signup,
   getUser,
   logout,
-  login
+  login,
+  getUserPups
 };

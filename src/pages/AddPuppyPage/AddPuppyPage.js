@@ -9,8 +9,8 @@ class AddPuppyPage extends Component {
       message: "",
       formData: {
         name: "",
-        age: null,
-        weight: null,
+        age: undefined,
+        weight: undefined,
         sex: "Female",
         description: ""
       }

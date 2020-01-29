@@ -98,7 +98,6 @@ const NavBar = props => {
             <Link
               to="/puppies"
               className="NavBar-link btn btn-outline-danger text-danger"
-              onClick={props.handleGetPuppies}
             >
               Puppies!
             </Link>

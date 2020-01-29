@@ -9,11 +9,25 @@ function MyPupsPage(props) {
   // mypups = props.user.pupprRef
   //   ? props.user.pupprRef.forEach(pup => console.log(pup))
   //   : null;
-  return (
+  let allPups = props.puppies;
+  console.log("allpups", allPups);
+  let userPups = props.user.puppyRef;
+  let myPups = Object.fromEntries(
+    Object.entries(allPups).filter(([key, val]) => userPups.includes(key))
+  );
+
+  console.log(myPups);
+
+  // userPups.forEach(pup => {
+  //   console.log(pup);
+  //   myPups.push(allPups.puppyRef.filter(pup));
+  // });
+
+  return myPups ? (
     <>
       <h1>Puppies Index!</h1>
       <CardDeck className="mx-auto carddeck container-fluid">
-        {props.puppies.map(puppy => (
+        {userPups.map(puppy => (
           <PuppyIndexCard
             puppy={puppy}
             handleDeletePuppy={props.handleDeletePuppy}
@@ -21,6 +35,11 @@ function MyPupsPage(props) {
           />
         ))}
       </CardDeck>
+    </>
+  ) : (
+    <>
+      <h1>Puppies Index!</h1>
+      <h3>Add a Puppy!</h3>
     </>
   );
 }

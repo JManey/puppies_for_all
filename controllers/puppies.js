@@ -38,12 +38,12 @@ async function addPup(req, res) {
   const token = req.headers.authorization;
   const loggedInUser = JSON.parse(atob(token.split(".")[1]));
   const email = loggedInUser.user.email;
-  console.log(email);
+  // console.log(email);
   const user = await User.findOne({ email: email });
-  console.log(user);
+  // console.log(user);
   const puppy = new Puppy(req.body);
 
-  console.log(puppy);
+  // console.log(puppy);
 
   try {
     await user.puppyRef.push(puppy);
@@ -58,7 +58,7 @@ async function addPup(req, res) {
 async function index(req, res) {
   try {
     const puppies = await Puppy.find({});
-    console.log(puppies);
+    // console.log(puppies);
     res.status(201).json(puppies);
   } catch (err) {
     res.status(400).json(err);
