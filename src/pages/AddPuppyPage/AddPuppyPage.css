@@ -4,4 +4,9 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
+  margin-top: 30px;
+}
+.formSize {
+  width: 300px;
+  margin: 0px;
 }

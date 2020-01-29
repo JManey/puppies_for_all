@@ -1,6 +1,7 @@
 .cardStyle {
-  /* max-width: 75%; */
+  width: 250px;
   display: flex;
+  margin: 30px;
   flex-direction: row;
   justify-content: center;
 }

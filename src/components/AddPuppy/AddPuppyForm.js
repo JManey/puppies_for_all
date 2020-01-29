@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import userService from "../../utils/userService";
+import "./AddPuppy.css";
 
 class AddPuppyForm extends Component {
   state = {
@@ -38,7 +39,7 @@ class AddPuppyForm extends Component {
 
   render() {
     return (
-      <div className="Modal">
+      <div className="Modal" style={{minWidth: "300px", maxWidth="300px"}}>
         <header className="header-footer">Add Puppy</header>
         <form
           ref={this.formRef}

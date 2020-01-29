@@ -10,8 +10,8 @@ function PuppyIndexCard(props) {
   return (
     // <CardDeck className="cards">
     <Card
-      className="mt-4 cardStyle"
-      style={{ minWidth: "200px", maxWidth: "300px" }}
+      className="mt-6 cardStyle"
+      style={{ minWidth: "250px", maxWidth: "250px" }}
       bg="warning"
     >
       <Card.Img variant="top" src="holder.js/100px180" />

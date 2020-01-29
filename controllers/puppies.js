@@ -1,6 +1,7 @@
 const Puppy = require("../models/Puppy");
 const User = require("../models/user");
 const atob = require("atob");
+// const upload = require("../config/photoUpload");
 
 module.exports = {
   addPup,
@@ -20,6 +21,8 @@ async function deleteOne(req, res) {
   // console.log(removedPupUser, "pulled pupref form user array");
   res.status(200).json(deletedPuppy);
 }
+
+// const singleUpload = upload.single("image");
 
 async function update(req, res) {
   const updatedPuppy = await Puppy.findByIdAndUpdate(req.params.id, req.body, {
