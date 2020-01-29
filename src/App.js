@@ -27,7 +27,7 @@ export default class App extends Component {
       const user = await userService.getUser();
       const id = user._id;
       const userWithPups = await userService.getUserPups(id);
-      this.setState({ puppies: puppies, user: userWithPups });
+      this.setState({ puppies: puppies, user: user });
     } catch (err) {
       console.log("error with cdm", err);
     }

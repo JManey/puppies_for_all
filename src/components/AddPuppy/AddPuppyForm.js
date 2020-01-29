@@ -39,7 +39,7 @@ class AddPuppyForm extends Component {
 
   render() {
     return (
-      <div className="Modal" style={{minWidth: "300px", maxWidth="300px"}}>
+      <div className="Modal addForm" style={{minWidth: "300px", maxWidth="300px"}}>
         <header className="header-footer">Add Puppy</header>
         <form
           ref={this.formRef}
