@@ -1,6 +1,6 @@
 //aws
 const AWS = require("aws-sdk");
-const uuid = require("uuid");
+
 const fs = require("fs");
 const fileType = require("file-type");
 const bluebird = require("bluebird");
@@ -9,11 +9,19 @@ const multer = require("multer");
 const multerS3 = require("multer-s3");
 // const config = require("../config");
 
+//set region
+//wouldn't read from .aws file
+AWS.config.region = "us-east-2";
+
 // configure the keys for accessing AWS
-AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: "us-east-2"
+AWS.config.getCredentials(function(err) {
+  if (err) console.log(err.stack);
+  // credentials not loaded
+  else {
+    console.log("acc key", AWS.config.credentials.accessKeyId);
+    console.log("sectet key", AWS.config.credentials.secretAccessKey);
+    console.log("region", AWS.config.region);
+  }
 });
 
 // configure AWS to work with promises
@@ -46,15 +54,6 @@ const s3 = new AWS.S3();
 // });
 // var AWS = require("aws-sdk");
 
-AWS.config.getCredentials(function(err) {
-  if (err) console.log(err.stack);
-  // credentials not loaded
-  else {
-    console.log("Access key:", AWS.config.credentials.accessKeyId);
-    console.log("Secret access key:", AWS.config.credentials.secretAccessKey);
-  }
-});
-
-module.exports = upload;
+// module.exports = upload;
 
 // /aws

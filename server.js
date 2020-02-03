@@ -8,6 +8,7 @@ const app = express();
 //require .env
 require("dotenv").config();
 require("./config/database");
+require("./config/photoUpload");
 
 app.use(logger("dev"));
 app.use(express.json());

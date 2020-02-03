@@ -1,15 +1,54 @@
 const Puppy = require("../models/Puppy");
 const User = require("../models/user");
 const atob = require("atob");
+const fs = require("fs");
+const aws = require("aws-sdk");
+const uuidv1 = require("uuid/v1");
 // const upload = require("../config/photoUpload");
+const BUCKET_NAME = "puppies-for-all";
 
-module.exports = {
-  addPup,
-  index,
-  show,
-  update,
-  deleteOne
-};
+// photo handling for puppies
+
+async function uploadFile(req, res) {
+  console.log("&*&*&*&*&*&*&uploadfile", req.body);
+  const s3 = new aws.S3();
+  //read content from file
+  const fileName = rec.body.fileName;
+  const fileType = rec.body.fileType;
+  // setup S# upload params
+
+  const params = {
+    Bucket: BUCKET_NAME,
+    Key: uuidv1() + fileName,
+
+    ContentType: fileType
+  };
+
+  // upload file to bucket
+  // reqeust to s3 api for signed URL to upload file too
+  s3.getSignedUrl("putObject", params, (err, data) => {
+    if (err) {
+      console.log("error getting singedURL", err);
+      res.json({ success: false, error: err });
+    }
+
+    // Data payload of what we are sending back, the url of the signedRequest and a URL where we can access the content after its saved.
+    const returnData = {
+      signedRequest: data,
+      url: `https://${params.Bucket}.s3.amazonaws.com/${params.Key}`
+    };
+    // Send it all back
+    console.log("returnData from backend", returnData);
+    res.json({ success: true, data: { returnData } });
+  });
+}
+
+async function update(req, res) {
+  const updatedPuppy = await Puppy.findByIdAndUpdate(req.params.id, req.body, {
+    new: true
+  });
+  res.status(200).json(updatedPuppy);
+}
 
 async function deleteOne(req, res) {
   // console.log("controller delete ", req.params.id);
@@ -20,15 +59,6 @@ async function deleteOne(req, res) {
   const deletedPuppy = await Puppy.findByIdAndRemove(req.params.id);
   // console.log(removedPupUser, "pulled pupref form user array");
   res.status(200).json(deletedPuppy);
-}
-
-// const singleUpload = upload.single("image");
-
-async function update(req, res) {
-  const updatedPuppy = await Puppy.findByIdAndUpdate(req.params.id, req.body, {
-    new: true
-  });
-  res.status(200).json(updatedPuppy);
 }
 
 async function show(req, res) {
@@ -67,3 +97,12 @@ async function index(req, res) {
     res.status(400).json(err);
   }
 }
+
+module.exports = {
+  addPup,
+  index,
+  show,
+  update,
+  deleteOne,
+  uploadFile
+};
