@@ -1,21 +1,27 @@
 const Puppy = require("../models/Puppy");
 const User = require("../models/user");
 const atob = require("atob");
-const fs = require("fs");
 const aws = require("aws-sdk");
+const multerS3 = require("multer-s3");
+const multer = require("multer");
 const uuidv1 = require("uuid/v1");
+const path = require("path");
+const url = require("url");
 // const upload = require("../config/photoUpload");
 const BUCKET_NAME = "puppies-for-all";
 
 // photo handling for puppies
-
-async function uploadFile(req, res) {
-  console.log("&*&*&*&*&*&*&uploadfile", req.body);
-  const s3 = new aws.S3();
-  //read content from file
-  const fileName = rec.body.fileName;
-  const fileType = rec.body.fileType;
-  // setup S# upload params
+const s3 = new aws.S3();
+const uploadFile = multer ({
+  storage: multerS3({
+  s3: s3,
+  bucket: 'puppies-for-all',
+  acl: 'public-read',
+  key: function (req, file, cb) {
+   cb(null, path.basename( file.originalname, path.extname( file.originalname ) ) + '-' + Date.now() + path.extname( file.originalname ) )
+  }
+}) 
+  
 
   const params = {
     Bucket: BUCKET_NAME,
