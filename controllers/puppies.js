@@ -12,42 +12,47 @@ const BUCKET_NAME = "puppies-for-all";
 
 // photo handling for puppies
 const s3 = new aws.S3();
-const uploadFile = multer ({
+const uploadFile = multer({
   storage: multerS3({
-  s3: s3,
-  bucket: 'puppies-for-all',
-  acl: 'public-read',
-  key: function (req, file, cb) {
-   cb(null, path.basename( file.originalname, path.extname( file.originalname ) ) + '-' + Date.now() + path.extname( file.originalname ) )
-  }
-}) 
-  
-
-  const params = {
-    Bucket: BUCKET_NAME,
-    Key: uuidv1() + fileName,
-
-    ContentType: fileType
-  };
-
-  // upload file to bucket
-  // reqeust to s3 api for signed URL to upload file too
-  s3.getSignedUrl("putObject", params, (err, data) => {
-    if (err) {
-      console.log("error getting singedURL", err);
-      res.json({ success: false, error: err });
+    s3: s3,
+    bucket: "puppies-for-all",
+    acl: "public-read",
+    key: function(req, file, cb) {
+      cb(
+        null,
+        path.basename(file.originalname, path.extname(file.originalname)) +
+          "-" +
+          Date.now() +
+          path.extname(file.originalname)
+      );
     }
+  })
+});
 
-    // Data payload of what we are sending back, the url of the signedRequest and a URL where we can access the content after its saved.
-    const returnData = {
-      signedRequest: data,
-      url: `https://${params.Bucket}.s3.amazonaws.com/${params.Key}`
-    };
-    // Send it all back
-    console.log("returnData from backend", returnData);
-    res.json({ success: true, data: { returnData } });
-  });
-}
+const params = {
+  Bucket: BUCKET_NAME,
+  Key: uuidv1(), // + fileName,
+
+  ContentType: "image" //fileType
+};
+
+// upload file to bucket
+// reqeust to s3 api for signed URL to upload file too
+s3.getSignedUrl("putObject", params, (err, data) => {
+  if (err) {
+    console.log("error getting singedURL", err);
+    res.json({ success: false, error: err });
+  }
+
+  // Data payload of what we are sending back, the url of the signedRequest and a URL where we can access the content after its saved.
+  const returnData = {
+    signedRequest: data,
+    url: `https://${params.Bucket}.s3.amazonaws.com/${params.Key}`
+  };
+  // Send it all back
+  console.log("returnData from backend", returnData);
+  res.json({ success: true, data: { returnData } });
+});
 
 async function update(req, res) {
   const updatedPuppy = await Puppy.findByIdAndUpdate(req.params.id, req.body, {
